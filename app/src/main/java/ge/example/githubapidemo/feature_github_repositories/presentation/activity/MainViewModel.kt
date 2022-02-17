@@ -1,4 +1,4 @@
-package ge.example.githubapidemo
+package ge.example.githubapidemo.feature_github_repositories.presentation.activity
 
 import android.os.SystemClock
 import androidx.lifecycle.ViewModel

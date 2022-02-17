@@ -1,4 +1,4 @@
-package ge.example.githubapidemo
+package ge.example.githubapidemo.feature_github_repositories.presentation.activity
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -11,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import ge.example.githubapidemo.R
 
 class MainActivity : AppCompatActivity() {
 
