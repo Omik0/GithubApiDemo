@@ -5,12 +5,15 @@ import android.animation.ObjectAnimator
 import android.graphics.Path
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log.d
 import android.view.View
 import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import ge.example.githubapidemo.BuildConfig
+import ge.example.githubapidemo.Keys
 import ge.example.githubapidemo.R
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         customizeSplashScreen(splashScreen)
+
+        d("token", Keys.githubToken() + BuildConfig.GITHUB_BASE_URL)
 
     }
 
