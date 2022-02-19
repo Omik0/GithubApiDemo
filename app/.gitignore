@@ -1,2 +1,2 @@
 /build
-/app/src/main/cpp/lib.cpp
+../app/src/main/cpp/lib.cpp
