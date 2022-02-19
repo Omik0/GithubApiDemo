@@ -9,13 +9,23 @@ import android.util.Log.d
 import android.view.View
 import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import dagger.hilt.android.AndroidEntryPoint
 import ge.example.githubapidemo.BuildConfig
 import ge.example.githubapidemo.Keys
 import ge.example.githubapidemo.R
+import ge.example.githubapidemo.feature_github_repositories.domain.utils.Resource
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
@@ -26,8 +36,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         customizeSplashScreen(splashScreen)
 
-        d("token", Keys.githubToken() + BuildConfig.GITHUB_BASE_URL)
+//        findViewById<AppCompatImageButton>(R.id.searchBtn).setOnClickListener {
+//            d("stateee", "clicked")
+//            viewModel.searchRepository("GithubApiDemo", 1, 30)
+//        }
 
+//        lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.state.collectLatest { state ->
+//                    when(state) {
+//                        is Resource.Loading -> {
+//                            d("stateee", "Loading")
+//                        }
+//                        is Resource.Success -> {
+//                            d("stateee", "Success")
+//                        }
+//                        is Resource.Error -> {
+//                            d("stateee", state.message.toString())
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
 
     private fun customizeSplashScreen(splashScreen: SplashScreen) {
@@ -36,7 +66,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun keepSplashScreenLonger(splashScreen: SplashScreen) {
-        splashScreen.setKeepOnScreenCondition { !viewModel.isDataReady() }
+        splashScreen.setKeepOnScreenCondition {
+            !viewModel.isDataReady
+        }
     }
 
     private fun customizeSplashScreenExit(splashScreen: SplashScreen) {
