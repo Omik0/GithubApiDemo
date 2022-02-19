@@ -1,4 +1,4 @@
-package ge.example.githubapidemo.feature_github_repositories.data.remote
+package ge.example.githubapidemo.feature_github_repositories.data.remote_data_source
 
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
 import retrofit2.Response

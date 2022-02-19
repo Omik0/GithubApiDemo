@@ -28,7 +28,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun start() {
         initRecycler()
-        viewModel.getUserResponse("GithubApiDemo")
 
         binding.apply {
             adapter.addLoadStateListener { loadStates ->
@@ -44,7 +43,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         binding.recyclerView.visibility = View.VISIBLE
                     }
                     is LoadState.Error -> {
-                        Log.d("awdawdawd", "ErrorRefresh")
                         binding.circularProgress.visibility = View.GONE
                         binding.recyclerView.visibility = View.INVISIBLE
                     }

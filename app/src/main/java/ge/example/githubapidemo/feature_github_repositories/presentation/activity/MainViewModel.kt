@@ -22,22 +22,13 @@ class MainViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    var isDataReady: Boolean = true
-
-    private val _state = MutableStateFlow<PagingData<GithubResponse.RepositoryItem>>(PagingData.empty())
+    private val _state =
+        MutableStateFlow<PagingData<GithubResponse.RepositoryItem>>(PagingData.empty())
     val state get() = _state.asStateFlow()
 
-//    fun searchRepository(
-//        query: String,
-//        perPage: Int,
-//        page: Int
-//    ) {
-//        viewModelScope.launch {
-//            searchRepositoryUseCase(query, perPage, page).collectLatest {
-//                _state.value = it
-//            }
-//        }
-//    }
+    init {
+        getUserResponse("Github")
+    }
 
     fun getUserResponse(query: String) {
         viewModelScope.launch {

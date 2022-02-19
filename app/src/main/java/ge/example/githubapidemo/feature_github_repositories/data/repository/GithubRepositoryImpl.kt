@@ -1,11 +1,9 @@
 package ge.example.githubapidemo.feature_github_repositories.data.repository
 
-import ge.example.githubapidemo.feature_github_repositories.data.remote.GithubService
+import ge.example.githubapidemo.feature_github_repositories.data.remote_data_source.GithubService
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
 import ge.example.githubapidemo.feature_github_repositories.domain.repository.GithubRepository
 import ge.example.githubapidemo.feature_github_repositories.domain.utils.Resource
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 
 class GithubRepositoryImpl(private val githubApi: GithubService) : GithubRepository {

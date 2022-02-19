@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import ge.example.githubapidemo.feature_github_repositories.data.remote.GithubService
+import ge.example.githubapidemo.feature_github_repositories.data.remote_data_source.GithubService
 import ge.example.githubapidemo.feature_github_repositories.data.repository.GithubRepositoryImpl
 import ge.example.githubapidemo.feature_github_repositories.domain.repository.GithubRepository
 import ge.example.githubapidemo.feature_github_repositories.domain.use_cases.SearchRepositoryUseCase
