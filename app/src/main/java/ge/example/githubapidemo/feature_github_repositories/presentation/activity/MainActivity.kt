@@ -5,17 +5,30 @@ import android.animation.ObjectAnimator
 import android.graphics.Path
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log.d
 import android.view.View
 import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import dagger.hilt.android.AndroidEntryPoint
+import ge.example.githubapidemo.BuildConfig
+import ge.example.githubapidemo.Keys
 import ge.example.githubapidemo.R
+import ge.example.githubapidemo.feature_github_repositories.domain.utils.Resource
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by viewModels()
+//    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -31,19 +44,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun keepSplashScreenLonger(splashScreen: SplashScreen) {
-        splashScreen.setKeepOnScreenCondition { !viewModel.isDataReady() }
+//        splashScreen.setKeepOnScreenCondition {
+//            !viewModel.isDataReady
+//        }
     }
 
     private fun customizeSplashScreenExit(splashScreen: SplashScreen) {
         splashScreen.setOnExitAnimationListener { splashScreenViewProvider ->
 
-            showSplashExitAnimator(splashScreenViewProvider.view) {
+//            showSplashExitAnimator(splashScreenViewProvider.view) {
                 splashScreenViewProvider.remove()
-            }
+//            }
 
-            showSplashIconExitAnimator(splashScreenViewProvider.iconView) {
-                splashScreenViewProvider.remove()
-            }
+//            showSplashIconExitAnimator(splashScreenViewProvider.iconView) {
+//                splashScreenViewProvider.remove()
+//            }
         }
     }
 

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="your_feed">Your <b>Feed</b></string>
+    <string name="no_repo_desc">Repo doesn\'t have any description</string>
+    <string name="none">None</string>
 </resources>

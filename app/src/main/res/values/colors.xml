@@ -9,7 +9,7 @@
     <color name="secondaryDark">#939393</color>
     <color name="secondaryDarkVariant">#4B4B4B</color>
 
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="black">#FF000000</color>
 
 </resources>

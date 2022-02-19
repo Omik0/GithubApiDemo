@@ -5,14 +5,18 @@
       <map>
         <entry key="app/src/main/res/drawable-night/ic_github.xml" value="0.2485" />
         <entry key="app/src/main/res/drawable-night/ic_github_outlined.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/background_stroke.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/ic_animated_github.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_favorite_filled.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/ic_favorite_outlined.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/ic_github.xml" value="0.2485" />
         <entry key="app/src/main/res/drawable/ic_github_logo.xml" value="0.2485" />
         <entry key="app/src/main/res/drawable/ic_github_outlined.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.1705" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28958333333333336" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3029891304347826" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.31160896130346233" />
+        <entry key="app/src/main/res/layout/load_state_layout.xml" value="0.3029891304347826" />
+        <entry key="app/src/main/res/layout/repository_item_layout.xml" value="0.2796610169491525" />
       </map>
     </option>
   </component>

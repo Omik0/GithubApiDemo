@@ -5,14 +5,19 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primaryVariant</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSurface">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/primaryDark</item>
         <item name="colorSecondaryVariant">@color/primaryDarkVariant</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
-        <item name="android:background">@color/primary</item>
-
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
     </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>
