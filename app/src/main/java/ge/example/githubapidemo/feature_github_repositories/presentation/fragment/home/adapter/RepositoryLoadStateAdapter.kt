@@ -37,9 +37,26 @@ class RepositoryLoadStateAdapter(private val retry: () -> Unit) :
 
         fun onBind(loadState: LoadState) {
             binding.apply {
-                loadingProgress.isVisible = loadState is LoadState.Loading
-                retryBtn.isVisible = loadState !is LoadState.Loading
-                errorTv.isVisible = loadState !is LoadState.Loading
+                when (loadState) {
+                    is LoadState.Loading -> {
+                        chooseState(true)
+                    }
+                    is LoadState.NotLoading -> {
+                        chooseState(false)
+                    }
+                    is LoadState.Error -> {
+                        chooseState(false, loadState.error.message)
+                    }
+                }
+            }
+        }
+
+        private fun chooseState(isLoading: Boolean, message: String? = null) {
+            binding.apply {
+                loadingProgress.isVisible = isLoading
+                retryBtn.isVisible = !isLoading
+                errorTv.isVisible = !isLoading
+                errorTv.text = message
             }
         }
     }

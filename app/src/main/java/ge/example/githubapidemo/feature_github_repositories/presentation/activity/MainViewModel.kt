@@ -8,9 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
-import ge.example.githubapidemo.feature_github_repositories.domain.model.RepositoryItem
 import ge.example.githubapidemo.feature_github_repositories.domain.use_cases.SearchRepositoryUseCase
-import ge.example.githubapidemo.feature_github_repositories.domain.utils.Resource
 import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.home.adapter.ReposDataSource
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -26,7 +24,7 @@ class MainViewModel @Inject constructor(
 
     var isDataReady: Boolean = true
 
-    private val _state = MutableStateFlow<PagingData<RepositoryItem>>(PagingData.empty())
+    private val _state = MutableStateFlow<PagingData<GithubResponse.RepositoryItem>>(PagingData.empty())
     val state get() = _state.asStateFlow()
 
 //    fun searchRepository(
@@ -49,7 +47,7 @@ class MainViewModel @Inject constructor(
                     enablePlaceholders = false
                 ),
                 pagingSourceFactory = { ReposDataSource(query, searchRepositoryUseCase) }
-            ).flow.collectLatest {
+            ).flow.cachedIn(viewModelScope).collectLatest {
                 _state.value = it
             }
         }

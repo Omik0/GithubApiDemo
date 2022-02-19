@@ -1,12 +1,16 @@
 package ge.example.githubapidemo.feature_github_repositories.presentation.fragment.home
 
-import androidx.core.view.isVisible
+import android.content.res.Configuration
+import android.util.Log
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ge.example.githubapidemo.databinding.FragmentHomeBinding
 import ge.example.githubapidemo.feature_github_repositories.presentation.activity.MainViewModel
@@ -24,17 +28,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun start() {
         initRecycler()
-        viewModel.getUserResponse("Github")
+        viewModel.getUserResponse("GithubApiDemo")
 
         binding.apply {
-
             adapter.addLoadStateListener { loadStates ->
-                recyclerView.isVisible = loadStates.source.refresh is LoadState.NotLoading
-                if (loadStates.source.refresh is LoadState.NotLoading &&
-                    loadStates.append.endOfPaginationReached && adapter.itemCount < 1
-                ) {
-                    recyclerView.isVisible = false
+                if (loadStates.append.endOfPaginationReached)
+                    Snackbar.make(recyclerView, "End of paging", Snackbar.LENGTH_SHORT).show()
+                when (loadStates.source.refresh) {
+                    is LoadState.Loading -> {
+                        binding.circularProgress.visibility = View.VISIBLE
+                        binding.recyclerView.visibility = View.INVISIBLE
+                    }
+                    is LoadState.NotLoading -> {
+                        binding.circularProgress.visibility = View.GONE
+                        binding.recyclerView.visibility = View.VISIBLE
+                    }
+                    is LoadState.Error -> {
+                        Log.d("awdawdawd", "ErrorRefresh")
+                        binding.circularProgress.visibility = View.GONE
+                        binding.recyclerView.visibility = View.INVISIBLE
+                    }
                 }
+
             }
         }
     }
@@ -53,11 +68,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private fun initRecycler() {
         binding.recyclerView.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(requireContext())
-//                if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
-//                    GridLayoutManager(requireContext(), 2)
-//                else
-//                    GridLayoutManager(requireContext(), 4)
+            layoutManager =
+                if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
+                    LinearLayoutManager(requireContext())
+                else
+                    GridLayoutManager(requireContext(), 2)
         }
         binding.apply {
             recyclerView.adapter = adapter

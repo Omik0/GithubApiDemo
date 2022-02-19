@@ -10,7 +10,7 @@
         android:id="@+id/loadingProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/secondaryDarkVariant" />
+        android:indeterminateTint="?attr/colorSecondaryVariant" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/errorTv"
