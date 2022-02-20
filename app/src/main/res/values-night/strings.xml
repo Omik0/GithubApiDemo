@@ -4,4 +4,5 @@
     <string name="no_repo_desc">Repo doesn\'t have any description</string>
     <string name="none">None</string>
     <string name="desc">Description</string>
+    <string name="search_repo">Search Repo</string>
 </resources>

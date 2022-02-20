@@ -38,7 +38,7 @@
                 android:fontFamily="@font/balsamiq_sans_regular"
                 android:maxLines="1"
                 android:text="Omik0/"
-                android:textColor="@color/primaryDarkVariant"
+                android:textColor="?attr/colorSecondaryVariant"
                 android:textSize="20sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toTopOf="@+id/ownerTv"
@@ -58,7 +58,7 @@
                 android:fontFamily="@font/balsamiq_sans_bold"
                 android:maxLines="1"
                 android:text="GithubApiDemo"
-                android:textColor="@color/primaryDarkVariant"
+                android:textColor="?attr/colorSecondaryVariant"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/ownerImage"
@@ -76,12 +76,12 @@
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/balsamiq_sans_italic"
                 android:maxLines="1"
-                android:text="This your first repo!"
                 android:textColor="@color/secondary"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ownerImage" />
+                app:layout_constraintTop_toBottomOf="@+id/ownerImage"
+                tools:text="This your first repo!" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/topicChipGroup"
@@ -90,35 +90,10 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/layFork"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/repoDescTv">
-
-                <com.google.android.material.chip.Chip
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="octocat" />
-
-                <com.google.android.material.chip.Chip
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="atom" />
-
-                <com.google.android.material.chip.Chip
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Elecgtron" />
-
-                <com.google.android.material.chip.Chip
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Api" />
-
-            </com.google.android.material.chip.ChipGroup>
+                app:layout_constraintTop_toBottomOf="@+id/repoDescTv" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layStar"
@@ -151,6 +126,7 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_regular"
                     android:text="Stars"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@+id/starValueTv"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -164,6 +140,7 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_bold"
                     android:maxLines="1"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:text="0"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -205,6 +182,7 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_regular"
                     android:text="Forks"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@+id/forkValueTv"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -218,6 +196,7 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_bold"
                     android:maxLines="1"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:text="0132"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -257,6 +236,7 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_regular"
                     android:text="Issues"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@+id/issueValueTv"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -270,6 +250,7 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_bold"
                     android:maxLines="1"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:text="0"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -287,6 +268,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="10dp"
                 app:cardCornerRadius="5dp"
+                app:cardBackgroundColor="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layFork"
@@ -407,7 +389,7 @@
                             android:layout_height="wrap_content"
                             android:text="admin"
                             android:textColor="@color/primaryDarkVariant"
-                            app:chipBackgroundColor="@color/primaryVariant" />
+                            app:chipBackgroundColor="@color/successGreen" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/pushChip"
@@ -416,7 +398,7 @@
                             android:layout_height="wrap_content"
                             android:text="push"
                             android:textColor="@color/primaryDarkVariant"
-                            app:chipBackgroundColor="@color/primaryVariant" />
+                            app:chipBackgroundColor="@color/errorRed" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/pullChip"
@@ -425,7 +407,7 @@
                             android:layout_height="wrap_content"
                             android:text="pull"
                             android:textColor="@color/primaryDarkVariant"
-                            app:chipBackgroundColor="@color/primaryVariant" />
+                            app:chipBackgroundColor="@color/successGreen" />
 
                     </com.google.android.material.chip.ChipGroup>
 
@@ -442,6 +424,7 @@
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/circle_background"
                 android:padding="10dp"
+                android:backgroundTint="?attr/colorOnSurface"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layBranch">
@@ -466,6 +449,7 @@
                     android:fontFamily="@font/balsamiq_sans_bold"
                     android:text="Whant to see repo?"
                     android:textSize="18sp"
+                    android:textColor="?attr/colorSecondaryVariant"
                     app:layout_constraintBottom_toTopOf="@+id/LinkValueTv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ibLink"
@@ -487,22 +471,6 @@
                     app:layout_constraintStart_toEndOf="@+id/ibLink"
                     app:layout_constraintTop_toBottomOf="@+id/tvLinkTitle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/circularProgress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:indeterminate="true"
-                android:tag="progress"
-                android:visibility="gone"
-                app:indicatorColor="?attr/colorSecondaryVariant"
-                app:indicatorSize="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:trackCornerRadius="30dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/errorTv"

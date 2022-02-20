@@ -13,19 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:hint="Search Repo"
-        android:textColorHint="@color/secondaryDarkVariant"
-        app:boxStrokeColor="@color/black"
+        android:hint="@string/search_repo"
+        android:textColorHint="?attr/colorSecondary"
+        app:boxStrokeColor="?attr/colorSecondaryVariant"
         app:boxStrokeWidth="2dp"
         app:endIconMode="clear_text"
-        app:endIconTint="@color/primaryDarkVariant"
-        app:hintTextColor="@color/secondaryDarkVariant"
+        app:endIconTint="?attr/colorSecondaryVariant"
+        app:hintTextColor="?attr/colorSecondary"
         app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/ic_search"
-        app:startIconTint="@color/primaryDarkVariant">
+        app:startIconTint="?attr/colorSecondaryVariant">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/searchEt"
