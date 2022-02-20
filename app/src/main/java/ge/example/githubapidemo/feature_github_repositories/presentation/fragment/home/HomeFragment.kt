@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ge.example.githubapidemo.databinding.FragmentHomeBinding
+import ge.example.githubapidemo.extensions.gone
+import ge.example.githubapidemo.extensions.invisible
+import ge.example.githubapidemo.extensions.visible
 import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.BaseFragment
 import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.home.adapter.RepositoryAdapter
 import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.home.adapter.RepositoryLoadStateAdapter
@@ -49,25 +52,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         binding.apply {
             adapter.addLoadStateListener { loadStates ->
-                if (loadStates.append.endOfPaginationReached)
-                    Snackbar.make(recyclerView, "End of paging", Snackbar.LENGTH_SHORT).show()
                 when (loadStates.source.refresh) {
                     is LoadState.Loading -> {
                         binding.apply {
-                            circularProgress.visibility = View.VISIBLE
-                            recyclerView.visibility = View.INVISIBLE
+                            circularProgress.visible()
+                            recyclerView.invisible()
                         }
                     }
                     is LoadState.NotLoading -> {
                         binding.apply {
-                            circularProgress.visibility = View.GONE
-                            recyclerView.visibility = View.VISIBLE
+                            circularProgress.gone()
+                            recyclerView.visible()
                         }
                     }
                     is LoadState.Error -> {
                         binding.apply {
-                            circularProgress.visibility = View.GONE
-                            recyclerView.visibility = View.VISIBLE
+                            circularProgress.gone()
+                            recyclerView.visible()
                         }
                     }
                 }

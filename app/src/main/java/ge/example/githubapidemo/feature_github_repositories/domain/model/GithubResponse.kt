@@ -156,7 +156,7 @@ data class GithubResponse(
         @Json(name = "teams_url")
         val teamsUrl: String?,
         @Json(name = "topics")
-        val topics: List<Any>?,
+        val topics: List<String>?,
         @Json(name = "trees_url")
         val treesUrl: String?,
         @Json(name = "updated_at")

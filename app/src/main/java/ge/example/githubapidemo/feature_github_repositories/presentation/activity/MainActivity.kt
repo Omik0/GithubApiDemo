@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ge.example.githubapidemo.R
 import ge.example.githubapidemo.databinding.ActivityMainBinding
+import ge.example.githubapidemo.extensions.setDrawable
 import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.details.DetailsFragmentDirections
 
 @AndroidEntryPoint
@@ -42,18 +43,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         when (destination.id) {
             R.id.detailsFragment -> {
                 _binding.apply {
-                    favouriteBtn.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            favouriteBtn.context,
-                            R.drawable.ic_arrow_back
-                        )
-                    )
-                    searchBtn.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            favouriteBtn.context,
-                            R.drawable.ic_favorite_outlined
-                        )
-                    )
+                    favouriteBtn.setDrawable(R.drawable.ic_arrow_back)
+                    searchBtn.setDrawable(R.drawable.ic_favorite_outlined)
                     favouriteBtn.setOnClickListener {
                         findNavController(R.id.nav_host_fragment).navigateUp()
                     }
@@ -61,18 +52,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             }
             R.id.homeFragment -> {
                 _binding.apply {
-                    favouriteBtn.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            favouriteBtn.context,
-                            R.drawable.ic_favorite_outlined
-                        )
-                    )
-                    searchBtn.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            favouriteBtn.context,
-                            R.drawable.ic_filter
-                        )
-                    )
+                    favouriteBtn.setDrawable(R.drawable.ic_favorite_outlined)
+                    searchBtn.setDrawable(R.drawable.ic_filter)
                 }
             }
         }
