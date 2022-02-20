@@ -12,6 +12,7 @@ import ge.example.githubapidemo.R
 import ge.example.githubapidemo.databinding.ActivityMainBinding
 import ge.example.githubapidemo.extensions.setDrawable
 import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.details.DetailsFragmentDirections
+import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.home.HomeFragmentDirections
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
@@ -54,6 +55,20 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 _binding.apply {
                     favouriteBtn.setDrawable(R.drawable.ic_favorite_outlined)
                     searchBtn.setDrawable(R.drawable.ic_filter)
+                    favouriteBtn.setOnClickListener {
+                        findNavController(R.id.nav_host_fragment).navigate(
+                            HomeFragmentDirections.actionHomeFragmentToFavouritesFragment()
+                        )
+                    }
+                }
+            }
+            R.id.favouritesFragment -> {
+                _binding.apply {
+                    favouriteBtn.setDrawable(R.drawable.ic_arrow_back)
+                    searchBtn.setDrawable(R.drawable.ic_filter)
+                    favouriteBtn.setOnClickListener {
+                        findNavController(R.id.nav_host_fragment).navigateUp()
+                    }
                 }
             }
         }
