@@ -30,6 +30,9 @@ class ReposDataSource(
             is Resource.Error -> {
                 LoadResult.Error(InvalidRepoException(repos.message))
             }
+            else -> {
+                LoadResult.Error(Throwable())
+            }
         }
     }
 

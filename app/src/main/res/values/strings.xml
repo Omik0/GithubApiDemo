@@ -6,4 +6,5 @@
     <string name="beedep_forked_from_bprayush_devstack_from_edx_devstack"><b>beedep </b> forked from <b> bprayush/devstack</b> from <b>edx/devstack</b> </string>
     <string name="no_repo_desc">Repo doesn\'t have any description</string>
     <string name="none">None</string>
+    <string name="desc">Description</string>
 </resources>
