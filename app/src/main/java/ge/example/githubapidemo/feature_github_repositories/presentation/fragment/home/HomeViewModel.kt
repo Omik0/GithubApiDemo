@@ -1,4 +1,4 @@
-package ge.example.githubapidemo.feature_github_repositories.presentation.activity
+package ge.example.githubapidemo.feature_github_repositories.presentation.fragment.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,8 +8,10 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
+import ge.example.githubapidemo.feature_github_repositories.domain.use_cases.RepositoryUseCases
 import ge.example.githubapidemo.feature_github_repositories.domain.use_cases.SearchRepositoryUseCase
 import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.home.adapter.ReposDataSource
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -17,8 +19,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
-    private val searchRepositoryUseCase: SearchRepositoryUseCase
+class HomeViewModel @Inject constructor(
+    private val repositoryUseCases: RepositoryUseCases
 ) :
     ViewModel() {
 
@@ -30,17 +32,22 @@ class MainViewModel @Inject constructor(
         getUserResponse("Github")
     }
 
-    fun getUserResponse(query: String) {
+    fun getUserResponse(query: String) =
         viewModelScope.launch {
+            delay(500)
             Pager(
                 config = PagingConfig(
                     pageSize = 1,
                     enablePlaceholders = false
                 ),
-                pagingSourceFactory = { ReposDataSource(query, searchRepositoryUseCase) }
+                pagingSourceFactory = {
+                    ReposDataSource(
+                        query,
+                        repositoryUseCases.searchRepositoryUseCase
+                    )
+                }
             ).flow.cachedIn(viewModelScope).collectLatest {
                 _state.value = it
             }
         }
-    }
 }

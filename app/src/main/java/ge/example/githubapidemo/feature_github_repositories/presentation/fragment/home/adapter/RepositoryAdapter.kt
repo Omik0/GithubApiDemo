@@ -10,17 +10,30 @@ import ge.example.githubapidemo.R
 import ge.example.githubapidemo.databinding.RepositoryItemLayoutBinding
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
 
+typealias OnRepoClick = (owner: String, repo: String) -> Unit
+
 class RepositoryAdapter :
-    PagingDataAdapter<GithubResponse.RepositoryItem, RepositoryAdapter.ShortItemViewHolder>(REPOSITORY_COMPARATOR) {
+    PagingDataAdapter<GithubResponse.RepositoryItem, RepositoryAdapter.ShortItemViewHolder>(
+        REPOSITORY_COMPARATOR
+    ) {
+
+    var repoItemOnClick: OnRepoClick? = null
 
     companion object {
-        private val REPOSITORY_COMPARATOR = object : DiffUtil.ItemCallback<GithubResponse.RepositoryItem>() {
-            override fun areItemsTheSame(oldItem: GithubResponse.RepositoryItem, newItem: GithubResponse.RepositoryItem) =
-                oldItem.id == newItem.id
+        private val REPOSITORY_COMPARATOR =
+            object : DiffUtil.ItemCallback<GithubResponse.RepositoryItem>() {
+                override fun areItemsTheSame(
+                    oldItem: GithubResponse.RepositoryItem,
+                    newItem: GithubResponse.RepositoryItem
+                ) =
+                    oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: GithubResponse.RepositoryItem, newItem: GithubResponse.RepositoryItem) =
-                oldItem == newItem
-        }
+                override fun areContentsTheSame(
+                    oldItem: GithubResponse.RepositoryItem,
+                    newItem: GithubResponse.RepositoryItem
+                ) =
+                    oldItem == newItem
+            }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -52,14 +65,17 @@ class RepositoryAdapter :
                     forksTv.text = forksCount.toString()
                 }
             }
-        }
-
-        private fun setListeners() {
             binding.root.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {
             val model = getItem(absoluteAdapterPosition)
+            model?.let {
+                repoItemOnClick?.invoke(
+                    model.owner?.login ?: "Omik0",
+                    model.name ?: "GithubApiDemo"
+                )
+            }
         }
     }
 

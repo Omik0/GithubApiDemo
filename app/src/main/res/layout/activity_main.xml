@@ -11,8 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         app:contentInsetStartWithNavigation="0dp"
         app:layout_constraintBottom_toTopOf="@+id/nav_host_fragment"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +34,7 @@
                 app:srcCompat="@drawable/ic_favorite_outlined" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/toolbarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -59,12 +58,12 @@
                 android:background="@null"
                 android:padding="10dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_search" />
+                app:srcCompat="@drawable/ic_filter" />
 
         </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"

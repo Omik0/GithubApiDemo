@@ -10,4 +10,9 @@ interface GithubRepository {
         perPage: Int,
         page: Int
     ): Resource<GithubResponse>
+
+    suspend fun getRepository(
+        owner: String,
+        repo: String,
+    ): Resource<GithubResponse.RepositoryItem>
 }

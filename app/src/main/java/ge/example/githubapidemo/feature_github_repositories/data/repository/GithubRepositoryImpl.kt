@@ -14,6 +14,12 @@ class GithubRepositoryImpl(private val githubApi: GithubService) : GithubReposit
     ): Resource<GithubResponse> =
         handleResponse { githubApi.searchRepository(query, perPage, page) }
 
+    override suspend fun getRepository(
+        owner: String,
+        repo: String
+    ): Resource<GithubResponse.RepositoryItem> =
+        handleResponse { githubApi.getRepository(owner, repo) }
+
 
     private suspend fun <M> handleResponse(
         request: suspend () -> Response<M>
