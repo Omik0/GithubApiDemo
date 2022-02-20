@@ -2,6 +2,7 @@ package ge.example.githubapidemo.feature_github_repositories.presentation.fragme
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log.d
 import android.view.Gravity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
@@ -18,7 +19,9 @@ import ge.example.githubapidemo.R
 import ge.example.githubapidemo.databinding.FragmentDetailsBinding
 import ge.example.githubapidemo.extensions.*
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
+import ge.example.githubapidemo.feature_github_repositories.domain.model.RepositoryItem
 import ge.example.githubapidemo.feature_github_repositories.domain.utils.Resource
+import ge.example.githubapidemo.feature_github_repositories.presentation.activity.MainActivity
 import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.BaseFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -43,32 +46,39 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
         detailArgs.apply {
             detailsViewModel.getRepo(owner, repo)
         }
-    }
+        binding.ibIssue.setOnClickListener {
+            detailsViewModel.addRepoInDatabase(detailsViewModel.repoState.value.data!!)
+        }
 
-    private fun setChipStyle(): ChipDrawable {
-        return ChipDrawable.createFromAttributes(
-            requireContext(),
-            null,
-            0,
-            com.google.android.material.R.style.Widget_MaterialComponents_Chip_Action
+        binding.fab.setOnClickListener {
+            detailsViewModel.apply {
+                repoState.value.data?.let { repo ->
+                    if (repoExistsState.value) {
+                        deleteRepoFromRoom(repo)
 
-        ).apply {
-            chipBackgroundColor =
-                AppCompatResources.getColorStateList(requireContext(), R.color.primaryVariant)
+                    } else {
+                        addRepoInDatabase(repo)
+                    }
+                    changeValue()
+                }
+            }
         }
     }
-
-    private fun createTopicChips(topic: String): Chip {
-        return Chip(requireContext()).apply {
-            text = topic
-            gravity = Gravity.CENTER
-            setTextColor(ContextCompat.getColor(requireContext(), R.color.primaryDarkVariant))
-            setChipDrawable(setChipStyle())
-        }
-    }
-
 
     override fun observer() {
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                detailsViewModel.repoExistsState.collectLatest { exists ->
+                    if (exists) {
+                        binding.fab.setDrawable(R.drawable.ic_favorite_filled)
+                    } else {
+                        binding.fab.setDrawable(R.drawable.ic_favorite_outlined)
+                    }
+                }
+            }
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 detailsViewModel.repoState.collectLatest { repoState ->
@@ -89,6 +99,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
                                     it.gone()
                             }
                             repoState.data?.let { repo ->
+                                detailsViewModel.checkRepoIfExists(repo)
                                 setUpViews(repo)
                             }
                         }
@@ -105,21 +116,17 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
         }
     }
 
-    private fun setUpViews(repo: GithubResponse.RepositoryItem) {
+    private fun setUpViews(repo: RepositoryItem) {
         binding.apply {
-            ownerTv.text = repo.owner?.login.plus("/")
+            ownerTv.text = repo.owner?.ownerLogin.plus("/")
             repoTv.text = repo.name
 //          ownerImage.setNetworkImage(repo.owner?.avatarUrl)
             repoDescTv.text = repo.description
-            starValueTv.text = repo.stargazersCount.toString()
-            forkValueTv.text = repo.forksCount.toString()
-            issueValueTv.text = repo.openIssuesCount.toString()
+            starValueTv.text = repo.stargazersCount?.getFormattedNumber()
+            forkValueTv.text = repo.forksCount?.getFormattedNumber()
+            issueValueTv.text = repo.openIssuesCount?.getFormattedNumber()
             branchName.text = repo.defaultBranch
             LinkValueTv.text = repo.htmlUrl
-            topicChipGroup.removeAllViews()
-            repo.topics?.forEach {
-                topicChipGroup.addView(createTopicChips(it))
-            }
         }
     }
 

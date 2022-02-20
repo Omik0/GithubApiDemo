@@ -5,4 +5,15 @@
     <string name="none">None</string>
     <string name="desc">Description</string>
     <string name="search_repo">Search Repo</string>
+    <string name="stars">Stars</string>
+    <string name="forks">Forks</string>
+    <string name="issues">Issues</string>
+    <string name="default_branch">Default Branch</string>
+    <string name="permissions">Permissions</string>
+    <string name="admin">admin</string>
+    <string name="pull">pull</string>
+    <string name="whant_to_see_repo">Whant to see repo?</string>
+    <string name="error">Error</string>
+    <string name="updated_about">Updated about 2 hour ago</string>
+    <string name="no_internet">No internet Connection</string>
 </resources>

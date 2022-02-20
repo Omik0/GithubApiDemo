@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ge.example.githubapidemo.R
 import ge.example.githubapidemo.databinding.RepositoryItemLayoutBinding
+import ge.example.githubapidemo.extensions.getFormattedNumber
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
+import ge.example.githubapidemo.feature_github_repositories.domain.model.RepositoryItem
 
 typealias OnRepoClick = (owner: String, repo: String) -> Unit
 
 class RepositoryAdapter :
-    PagingDataAdapter<GithubResponse.RepositoryItem, RepositoryAdapter.ShortItemViewHolder>(
+    PagingDataAdapter<RepositoryItem, RepositoryAdapter.ShortItemViewHolder>(
         REPOSITORY_COMPARATOR
     ) {
 
@@ -21,16 +23,16 @@ class RepositoryAdapter :
 
     companion object {
         private val REPOSITORY_COMPARATOR =
-            object : DiffUtil.ItemCallback<GithubResponse.RepositoryItem>() {
+            object : DiffUtil.ItemCallback<RepositoryItem>() {
                 override fun areItemsTheSame(
-                    oldItem: GithubResponse.RepositoryItem,
-                    newItem: GithubResponse.RepositoryItem
+                    oldItem: RepositoryItem,
+                    newItem: RepositoryItem
                 ) =
                     oldItem.id == newItem.id
 
                 override fun areContentsTheSame(
-                    oldItem: GithubResponse.RepositoryItem,
-                    newItem: GithubResponse.RepositoryItem
+                    oldItem: RepositoryItem,
+                    newItem: RepositoryItem
                 ) =
                     oldItem == newItem
             }
@@ -53,7 +55,7 @@ class RepositoryAdapter :
     inner class ShortItemViewHolder(private val binding: RepositoryItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
-        fun onBind(repo: GithubResponse.RepositoryItem?) {
+        fun onBind(repo: RepositoryItem?) {
             repo?.apply {
                 binding.apply {
 //                    ownerImage.setNetworkImage(owner?.avatarUrl)
@@ -61,8 +63,8 @@ class RepositoryAdapter :
                     repoDescTv.text =
                         description ?: repoDescTv.context.getString(R.string.no_repo_desc)
                     languageTv.text = language ?: languageTv.context.getString(R.string.none)
-                    startTv.text = stargazersCount.toString()
-                    forksTv.text = forksCount.toString()
+                    startTv.text = stargazersCount?.getFormattedNumber()
+                    forksTv.text = forksCount?.getFormattedNumber()
                 }
             }
             binding.root.setOnClickListener(this)
@@ -72,7 +74,7 @@ class RepositoryAdapter :
             val model = getItem(absoluteAdapterPosition)
             model?.let {
                 repoItemOnClick?.invoke(
-                    model.owner?.login ?: "Omik0",
+                    model.owner?.ownerLogin ?: "Omik0",
                     model.name ?: "GithubApiDemo"
                 )
             }

@@ -8,7 +8,16 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
+import com.google.android.material.snackbar.Snackbar
 import ge.example.githubapidemo.R
+
+fun View.showSnack(message: String, color: Int) {
+    val snackBar: Snackbar = Snackbar.make(this, message, Snackbar.LENGTH_SHORT)
+    val snackBarView = snackBar.view
+    snackBarView.backgroundTintList = ContextCompat.getColorStateList(this.context, color)
+    snackBar.show()
+}
+
 
 fun View.visible(): View {
     if (visibility != View.VISIBLE) {
@@ -49,13 +58,6 @@ fun ImageView.setDrawable(icon: Int) {
     )
 }
 
-fun Chip.defineColor(hasPermission: Boolean) {
-    this.chipBackgroundColor = if (hasPermission)
-        AppCompatResources.getColorStateList(this.context, R.color.successGreen)
-    else
-        AppCompatResources.getColorStateList(this.context, R.color.errorRed)
-
-}
 
 fun ImageView.setNetworkImage(
     cover: String?,

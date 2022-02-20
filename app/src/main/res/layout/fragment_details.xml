@@ -16,7 +16,8 @@
             android:id="@+id/rootConstraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="30dp">
+            android:layout_gravity="center"
+            android:paddingBottom="50dp">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ownerImage"
@@ -37,7 +38,6 @@
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/balsamiq_sans_regular"
                 android:maxLines="1"
-                android:text="Omik0/"
                 android:textColor="?attr/colorSecondaryVariant"
                 android:textSize="20sp"
                 android:textStyle="normal"
@@ -57,7 +57,6 @@
                 android:background="@null"
                 android:fontFamily="@font/balsamiq_sans_bold"
                 android:maxLines="1"
-                android:text="GithubApiDemo"
                 android:textColor="?attr/colorSecondaryVariant"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -83,18 +82,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/ownerImage"
                 tools:text="This your first repo!" />
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/topicChipGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/layFork"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/repoDescTv" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layStar"
                 android:layout_width="wrap_content"
@@ -105,7 +92,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/layFork"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/topicChipGroup">
+                app:layout_constraintTop_toBottomOf="@+id/repoDescTv">
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/ibStar"
@@ -125,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_regular"
-                    android:text="Stars"
+                    android:text="@string/stars"
                     android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@+id/starValueTv"
@@ -141,7 +128,6 @@
                     android:fontFamily="@font/balsamiq_sans_bold"
                     android:maxLines="1"
                     android:textColor="?attr/colorSecondaryVariant"
-                    android:text="0"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/ibStar"
@@ -181,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_regular"
-                    android:text="Forks"
+                    android:text="@string/forks"
                     android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@+id/forkValueTv"
@@ -197,7 +183,6 @@
                     android:fontFamily="@font/balsamiq_sans_bold"
                     android:maxLines="1"
                     android:textColor="?attr/colorSecondaryVariant"
-                    android:text="0132"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/ibFork"
@@ -235,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_regular"
-                    android:text="Issues"
+                    android:text="@string/issues"
                     android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@+id/issueValueTv"
@@ -251,7 +236,6 @@
                     android:fontFamily="@font/balsamiq_sans_bold"
                     android:maxLines="1"
                     android:textColor="?attr/colorSecondaryVariant"
-                    android:text="0"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/ibIssue"
@@ -267,8 +251,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="10dp"
-                app:cardCornerRadius="5dp"
                 app:cardBackgroundColor="@color/primary"
+                app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layFork"
@@ -289,7 +273,7 @@
                         android:paddingTop="5dp"
                         android:paddingEnd="20dp"
                         android:paddingBottom="5dp"
-                        android:text="Default Branch"
+                        android:text="@string/default_branch"
                         android:textColor="@color/secondaryDarkVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -330,7 +314,6 @@
                         android:fontFamily="@font/balsamiq_sans_regular"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="master"
                         android:textColor="@color/secondary"
                         app:layout_constraintBottom_toBottomOf="@+id/branchIcon"
                         app:layout_constraintStart_toEndOf="@+id/branchIcon"
@@ -346,7 +329,7 @@
                         android:fontFamily="@font/balsamiq_sans_regular"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="Updated about 2 hour ago "
+                        android:text="@string/updated_about"
                         android:textColor="@color/secondary"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -362,7 +345,7 @@
                         android:fontFamily="@font/balsamiq_sans_bold"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="Permissions "
+                        android:text="@string/permissions"
                         android:textColor="@color/secondaryVariant"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -387,7 +370,7 @@
                             style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="admin"
+                            android:text="@string/admin"
                             android:textColor="@color/primaryDarkVariant"
                             app:chipBackgroundColor="@color/successGreen" />
 
@@ -396,7 +379,7 @@
                             style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="push"
+                            android:text="@string/push"
                             android:textColor="@color/primaryDarkVariant"
                             app:chipBackgroundColor="@color/errorRed" />
 
@@ -405,7 +388,7 @@
                             style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="pull"
+                            android:text="@string/pull"
                             android:textColor="@color/primaryDarkVariant"
                             app:chipBackgroundColor="@color/successGreen" />
 
@@ -423,8 +406,8 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/circle_background"
-                android:padding="10dp"
                 android:backgroundTint="?attr/colorOnSurface"
+                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layBranch">
@@ -447,9 +430,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_bold"
-                    android:text="Whant to see repo?"
-                    android:textSize="18sp"
+                    android:text="@string/whant_to_see_repo"
                     android:textColor="?attr/colorSecondaryVariant"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toTopOf="@+id/LinkValueTv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ibLink"
@@ -462,7 +445,6 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/balsamiq_sans_regular"
                     android:maxLines="1"
-                    android:text="https://github.com/octocat/Hello-World"
                     android:textColor="@color/secondary"
                     android:textSize="13sp"
                     android:textStyle="bold"
@@ -479,7 +461,7 @@
                 android:fontFamily="@font/balsamiq_sans_bold"
                 android:gravity="center"
                 android:tag="error"
-                android:text="Error"
+                android:text="@string/error"
                 android:textColor="@android:color/holo_red_dark"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -488,6 +470,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="?attr/colorSecondaryVariant"
+                android:backgroundTint="?attr/colorSecondaryVariant"
+                android:src="@drawable/ic_favorite_outlined"
+                app:backgroundTint="?attr/colorSecondaryVariant"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@color/white" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
