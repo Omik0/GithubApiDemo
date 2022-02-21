@@ -10,7 +10,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import ge.example.githubapidemo.BuildConfig
 import ge.example.githubapidemo.utils.ConnectivityListener
+import ge.example.githubapidemo.utils.Keys
 import okhttp3.Dispatcher
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -38,7 +40,15 @@ object NetworkModule {
         loggingInterceptor: HttpLoggingInterceptor,
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
-        builder.addInterceptor(loggingInterceptor)
+        builder
+            .addInterceptor(
+                Interceptor { chain ->
+                    val requestBuilder = chain.request().newBuilder()
+                    requestBuilder.header("Authorization", Keys.githubToken())
+                    return@Interceptor chain.proceed(requestBuilder.build())
+                }
+            )
+            .addInterceptor(loggingInterceptor)
             .dispatcher(Dispatcher().apply { maxRequests = 5 })
             .readTimeout(30, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS)
