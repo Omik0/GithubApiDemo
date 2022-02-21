@@ -6,7 +6,7 @@ This project is an android whitch provides some information about github reposit
 
 Airport Restriction	|
 :------:|
-![](demo/country_restricion.gif)  | 
+![](demo/demo.gif)  | 
 
 
 ## Architecture
