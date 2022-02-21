@@ -1,7 +1,6 @@
 package ge.example.githubapidemo.feature_github_repositories.presentation.fragment.home
 
 import android.content.res.Configuration
-import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -11,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ge.example.githubapidemo.databinding.FragmentHomeBinding
 import ge.example.githubapidemo.extensions.gone
@@ -43,9 +41,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 editable?.let {
                     job?.cancel()
                     job = if (it.isEmpty()) {
-                        viewModel.getUserResponse("Github")
+                        viewModel.getRepoResponse("Github")
                     } else
-                        viewModel.getUserResponse(it.toString())
+                        viewModel.getRepoResponse(it.toString())
                 }
             }
         }
@@ -81,7 +79,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collectLatest {
-                    adapter.submitData(lifecycle, it)
+                    adapter.submitData(it)
                 }
             }
         }

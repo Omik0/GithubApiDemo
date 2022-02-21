@@ -2,8 +2,8 @@ package ge.example.githubapidemo.feature_github_repositories.presentation.fragme
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
 import ge.example.githubapidemo.feature_github_repositories.domain.model.InvalidRepoException
+import ge.example.githubapidemo.feature_github_repositories.domain.model.RepositoryItem
 import ge.example.githubapidemo.feature_github_repositories.domain.use_cases.SearchRepositoryUseCase
 import ge.example.githubapidemo.feature_github_repositories.domain.utils.Resource
 
@@ -13,9 +13,9 @@ class ReposDataSource(
     private val query: String,
     private val searchRepositoryUseCase: SearchRepositoryUseCase
 ) :
-    PagingSource<Int, GithubResponse.RepositoryItem>() {
+    PagingSource<Int, RepositoryItem>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GithubResponse.RepositoryItem> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, RepositoryItem> {
         val position = params.key ?: USER_STARTING_PAGE_INDEX
         return when (val repos = searchRepositoryUseCase(query = query, page = position)) {
             is Resource.Success -> {
@@ -36,9 +36,10 @@ class ReposDataSource(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, GithubResponse.RepositoryItem>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, RepositoryItem>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition)?.prevKey
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 

@@ -8,6 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
+import ge.example.githubapidemo.feature_github_repositories.domain.model.RepositoryItem
 import ge.example.githubapidemo.feature_github_repositories.domain.use_cases.RepositoryUseCases
 import ge.example.githubapidemo.feature_github_repositories.domain.use_cases.SearchRepositoryUseCase
 import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.home.adapter.ReposDataSource
@@ -25,14 +26,14 @@ class HomeViewModel @Inject constructor(
     ViewModel() {
 
     private val _state =
-        MutableStateFlow<PagingData<GithubResponse.RepositoryItem>>(PagingData.empty())
+        MutableStateFlow<PagingData<RepositoryItem>>(PagingData.empty())
     val state get() = _state.asStateFlow()
 
     init {
-        getUserResponse("Github")
+        getRepoResponse("Github")
     }
 
-    fun getUserResponse(query: String) =
+    fun getRepoResponse(query: String) =
         viewModelScope.launch {
             delay(500)
             Pager(

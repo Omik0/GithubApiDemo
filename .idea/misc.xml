@@ -26,11 +26,12 @@
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_star.xml" value="0.1855" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28958333333333336" />
-        <entry key="app/src/main/res/layout/fragment_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_details.xml" value="0.278857421875" />
         <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.3029891304347826" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21428571428571427" />
         <entry key="app/src/main/res/layout/load_state_layout.xml" value="0.3029891304347826" />
         <entry key="app/src/main/res/layout/repository_item_layout.xml" value="0.2796610169491525" />
+        <entry key="app/src/main/res/layout/repository_secon_item_layout.xml" value="0.3104166666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2315" />
       </map>
     </option>

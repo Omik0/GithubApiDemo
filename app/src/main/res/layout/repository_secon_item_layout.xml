@@ -18,7 +18,7 @@
         android:padding="15dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ownerImage"
+            android:id="@+id/repoImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
@@ -26,7 +26,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            app:srcCompat="@mipmap/ic_launcher" />
+            app:srcCompat="@drawable/ic_git_repository"
+            app:tint="#477CCA" />
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/titleTv"
@@ -36,40 +38,28 @@
             android:layout_marginEnd="10dp"
             android:background="@null"
             android:maxLines="3"
+            android:textStyle="bold"
             android:text="@string/beedep_forked_from_bprayush_devstack_from_edx_devstack"
             android:textColor="?attr/colorSecondaryVariant"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="@+id/ownerImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ownerImage"
-            app:layout_constraintTop_toTopOf="@+id/ownerImage" />
-
-        <View
-            android:id="@+id/dividerHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:background="@android:color/white"
-            android:backgroundTint="@color/primaryVariant"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTv" />
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/repoNameTv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@null"
-            android:maxLines="1"
-            android:text="@string/description"
-            android:textColor="?attr/colorSecondaryVariant"
             android:textSize="20sp"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/repoImage"
+            app:layout_constraintEnd_toStartOf="@+id/deleteRepoImage"
+            app:layout_constraintStart_toEndOf="@+id/repoImage"
+            app:layout_constraintTop_toTopOf="@+id/repoImage" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/deleteRepoImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/titleTv"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dividerHorizontal" />
+            app:layout_constraintStart_toEndOf="@+id/titleTv"
+            app:layout_constraintTop_toTopOf="@+id/titleTv"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:srcCompat="@drawable/ic_delete"
+            app:tint="#CA4747" />
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/repoDescTv"
@@ -84,7 +74,7 @@
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/repoNameTv" />
+            app:layout_constraintTop_toBottomOf="@+id/repoImage" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/languageTv"

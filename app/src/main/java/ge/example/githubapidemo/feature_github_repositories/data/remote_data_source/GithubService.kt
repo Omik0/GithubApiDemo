@@ -1,6 +1,7 @@
 package ge.example.githubapidemo.feature_github_repositories.data.remote_data_source
 
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
+import ge.example.githubapidemo.feature_github_repositories.domain.model.RepositoryItem
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -21,5 +22,5 @@ interface GithubService {
     suspend fun getRepository(
         @Path("owner") owner: String,
         @Path("repo") repo: String,
-    ): Response<GithubResponse.RepositoryItem>
+    ): Response<RepositoryItem>
 }

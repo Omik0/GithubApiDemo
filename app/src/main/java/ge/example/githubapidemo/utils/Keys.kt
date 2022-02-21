@@ -1,4 +1,4 @@
-package ge.example.githubapidemo
+package ge.example.githubapidemo.utils
 
 object Keys {
 
