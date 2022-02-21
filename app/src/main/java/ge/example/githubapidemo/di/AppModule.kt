@@ -9,7 +9,7 @@ import ge.example.githubapidemo.feature_github_repositories.data.remote_data_sou
 import ge.example.githubapidemo.feature_github_repositories.data.repository.GithubRepositoryImpl
 import ge.example.githubapidemo.feature_github_repositories.domain.repository.GithubRepository
 import ge.example.githubapidemo.feature_github_repositories.domain.use_cases.*
-import ge.example.githubapidemo.feature_github_repositories.domain.utils.ConnectivityListener
+import ge.example.githubapidemo.utils.ConnectivityListener
 import retrofit2.Retrofit
 import javax.inject.Singleton
 

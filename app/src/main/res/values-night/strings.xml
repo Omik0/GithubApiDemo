@@ -16,4 +16,6 @@
     <string name="error">Error</string>
     <string name="updated_about">Updated about 2 hour ago</string>
     <string name="no_internet">No internet Connection</string>
+    <string name="description">Description</string>
+    <string name="last_updated">Last Updated: <b>%1$s</b></string>
 </resources>

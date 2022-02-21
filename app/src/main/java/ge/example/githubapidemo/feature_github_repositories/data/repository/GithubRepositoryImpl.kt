@@ -5,7 +5,7 @@ import ge.example.githubapidemo.feature_github_repositories.data.remote_data_sou
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
 import ge.example.githubapidemo.feature_github_repositories.domain.model.RepositoryItem
 import ge.example.githubapidemo.feature_github_repositories.domain.repository.GithubRepository
-import ge.example.githubapidemo.feature_github_repositories.domain.utils.ConnectivityListener
+import ge.example.githubapidemo.utils.ConnectivityListener
 import ge.example.githubapidemo.feature_github_repositories.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response

@@ -1,10 +1,10 @@
 package ge.example.githubapidemo.feature_github_repositories.presentation.activity
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log.d
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageButton
-import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -16,12 +16,11 @@ import ge.example.githubapidemo.extensions.gone
 import ge.example.githubapidemo.extensions.setDrawable
 import ge.example.githubapidemo.extensions.showSnack
 import ge.example.githubapidemo.extensions.visible
-import ge.example.githubapidemo.feature_github_repositories.domain.utils.ConnectivityListener
-import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.details.DetailsFragmentDirections
 import ge.example.githubapidemo.feature_github_repositories.presentation.fragment.home.HomeFragmentDirections
+import ge.example.githubapidemo.utils.ConnectivityListener
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
-import kotlin.math.ln
-import kotlin.math.pow
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
@@ -41,6 +40,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             if (!isNetworkAvailable)
                 _binding.root.showSnack(getString(R.string.no_internet), R.color.errorRed)
         }
+
     }
 
     private fun setUpBottomNavigation() {

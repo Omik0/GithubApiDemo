@@ -329,7 +329,7 @@
                         android:fontFamily="@font/balsamiq_sans_regular"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="@string/updated_about"
+                        android:text="@string/last_updated"
                         android:textColor="@color/secondary"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -482,7 +482,7 @@
                 app:backgroundTint="?attr/colorSecondaryVariant"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:tint="@color/white" />
+                app:tint="?attr/colorPrimary" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

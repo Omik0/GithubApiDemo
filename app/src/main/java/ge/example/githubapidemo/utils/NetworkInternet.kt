@@ -1,4 +1,4 @@
-package ge.example.githubapidemo.feature_github_repositories.domain.utils
+package ge.example.githubapidemo.utils
 
 import java.io.IOException
 import java.net.InetSocketAddress

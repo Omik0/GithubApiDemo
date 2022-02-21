@@ -9,7 +9,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import ge.example.githubapidemo.BuildConfig
-import ge.example.githubapidemo.feature_github_repositories.domain.utils.ConnectivityListener
+import ge.example.githubapidemo.utils.ConnectivityListener
 import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

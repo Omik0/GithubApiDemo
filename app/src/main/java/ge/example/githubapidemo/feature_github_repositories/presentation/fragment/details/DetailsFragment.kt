@@ -127,6 +127,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
             issueValueTv.text = repo.openIssuesCount?.getFormattedNumber()
             branchName.text = repo.defaultBranch
             LinkValueTv.text = repo.htmlUrl
+            updatedTv.text = getString(R.string.last_updated, repo.updatedAt?.formatDate())
         }
     }
 

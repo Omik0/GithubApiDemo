@@ -1,4 +1,4 @@
-package ge.example.githubapidemo.feature_github_repositories.domain.utils
+package ge.example.githubapidemo.utils
 
 import android.content.Context
 import android.content.Context.CONNECTIVITY_SERVICE

@@ -59,7 +59,7 @@ class RepositoryAdapter :
             repo?.apply {
                 binding.apply {
 //                    ownerImage.setNetworkImage(owner?.avatarUrl)
-                    repoNameTv.text = fullName
+                    titleTv.text = fullName
                     repoDescTv.text =
                         description ?: repoDescTv.context.getString(R.string.no_repo_desc)
                     languageTv.text = language ?: languageTv.context.getString(R.string.none)
