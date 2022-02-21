@@ -120,7 +120,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
         binding.apply {
             ownerTv.text = repo.owner?.ownerLogin.plus("/")
             repoTv.text = repo.name
-//          ownerImage.setNetworkImage(repo.owner?.avatarUrl)
+            ownerImage.setNetworkImage(repo.owner?.ownerAvatarUrl)
             repoDescTv.text = repo.description
             starValueTv.text = repo.stargazersCount?.getFormattedNumber()
             forkValueTv.text = repo.forksCount?.getFormattedNumber()

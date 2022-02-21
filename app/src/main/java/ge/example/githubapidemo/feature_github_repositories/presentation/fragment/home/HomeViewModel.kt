@@ -30,10 +30,10 @@ class HomeViewModel @Inject constructor(
     val state get() = _state.asStateFlow()
 
     init {
-        getUserResponse("Github")
+        getRepoResponse("Github")
     }
 
-    fun getUserResponse(query: String) =
+    fun getRepoResponse(query: String) =
         viewModelScope.launch {
             delay(500)
             Pager(

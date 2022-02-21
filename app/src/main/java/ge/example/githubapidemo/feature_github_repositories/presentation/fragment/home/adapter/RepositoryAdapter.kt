@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ge.example.githubapidemo.R
 import ge.example.githubapidemo.databinding.RepositoryItemLayoutBinding
 import ge.example.githubapidemo.extensions.getFormattedNumber
+import ge.example.githubapidemo.extensions.setNetworkImage
 import ge.example.githubapidemo.feature_github_repositories.domain.model.GithubResponse
 import ge.example.githubapidemo.feature_github_repositories.domain.model.RepositoryItem
 
@@ -58,7 +59,7 @@ class RepositoryAdapter :
         fun onBind(repo: RepositoryItem?) {
             repo?.apply {
                 binding.apply {
-//                    ownerImage.setNetworkImage(owner?.avatarUrl)
+                    ownerImage.setNetworkImage(owner?.ownerAvatarUrl)
                     titleTv.text = fullName
                     repoDescTv.text =
                         description ?: repoDescTv.context.getString(R.string.no_repo_desc)
