@@ -4,7 +4,7 @@ This project is an android whitch provides some information about github reposit
 
 ## Demo videos
 
-Airport Restriction	|
+Search Repository	|
 :------:|
 ![](demo/demo.gif)  | 
 
