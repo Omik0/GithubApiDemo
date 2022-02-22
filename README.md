@@ -4,10 +4,9 @@ This project is an android whitch provides some information about github reposit
 
 ## Demo videos
 
-Search Repository	|
-:------:|
-![](demo/demo.gif)  | 
-
+Search Repositories (Light)	|	Search Repositories (Dark)	|
+:------:|:---------------------:|
+![](demo/demo_light.gif)  |  ![](demo/demo_dark.gif)  |  
 
 ## Architecture
 
